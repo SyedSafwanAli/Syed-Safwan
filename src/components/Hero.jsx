@@ -4,9 +4,9 @@ import React from 'react';
 // 🌟 IMPORTANT: This path must be correct based on your file structure 🌟
 import heroImage from '../assets/images/image-removebg-preview.webp'; 
 
-function Hero() {
+function Hero({ toggleAppointmentModal }) {
   return (
-    <div className="hero">
+    <section className="hero" id="home">
       {/* IMAGE AT TOP (Mobile Order 1) */}
       <div className="img-wrapper">
         <img src={heroImage} alt="me" />
@@ -22,8 +22,8 @@ function Hero() {
         </h1>
         <div className="tagline"> I build modern and responsive websites. </div>
         <div className="buttons">
-          <button className="btn btn-primary">Hire Me</button>
-          <button className="btn btn-outline">View My Work</button>
+          <button className="btn btn-primary" onClick={toggleAppointmentModal}>Hire Me</button>
+          <button className="btn btn-outline" onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}>View My Work</button>
         </div>
       </div>
 
@@ -42,7 +42,7 @@ function Hero() {
           <p>Happy Clients</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

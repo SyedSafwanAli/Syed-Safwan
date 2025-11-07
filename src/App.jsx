@@ -25,7 +25,8 @@ function App() {
   const [isAppointmentOpen, setIsAppointmentOpen] = useState(false);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState('');
-  const [isSticky, setIsSticky] = useState(false); // NEW: State for Sticky Header
+  const [isSticky, setIsSticky] = useState(false);
+  const [activeLink, setActiveLink] = useState('home');
   
   // === Handler Functions ===
   
@@ -87,16 +88,27 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMenuOpen]);
   
-  // 3. Sticky Header Logic (Replaces window.addEventListener("scroll"))
+  // 3. Sticky Header & Active Link Logic
   useEffect(() => {
     const handleScroll = () => {
         const currentScrollPosition = window.scrollY;
-        // Apply sticky class if scrolled past 100px (standard scroll threshold)
+        
+        // Sticky Header
         if (currentScrollPosition > 100) { 
             setIsSticky(true);
         } else {
             setIsSticky(false);
         }
+
+        // Active Link
+        const sections = document.querySelectorAll('section[id]');
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            if (currentScrollPosition >= sectionTop && currentScrollPosition < sectionTop + sectionHeight) {
+                setActiveLink(section.id);
+            }
+        });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -114,11 +126,12 @@ function App() {
         toggleAppointmentModal={() => handleModalToggle('appointmentModal')} 
         toggleMenu={toggleMenu}
         isMenuOpen={isMenuOpen} 
-        isSticky={isSticky} // NEW PROP
+        isSticky={isSticky}
+        activeLink={activeLink}
       />
       
       {/* 2. HERO */}
-      <Hero />
+      <Hero toggleAppointmentModal={() => handleModalToggle('appointmentModal')} />
       
       {/* 3. ABOUT */}
       <AboutSection />
