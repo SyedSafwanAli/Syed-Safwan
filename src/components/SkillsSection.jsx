@@ -16,7 +16,7 @@ const skillData = [
     { name: 'Wordpress', icon: wordpressIcon, target: 84, targetValue: 95, class: 'wordpress-progress' },
     { name: 'React', icon: reactIcon, target: 65, targetValue: 80, class: 'angular-progress' },
     { name: 'Figma', icon: skill1Icon, target: 95, targetValue: 90, class: 'figma-progress' },
-    { name: 'HTML & CSS', icon: skill2Icon, target: 83, targetValue: 75, class: 'framer-progress' },
+    { name: 'HTML & CSS', icon: skill2Icon, target: 83, targetValue: 98, class: 'framer-progress' },
     { name: 'Photoshop', icon: skill3Icon, target: 93, targetValue: 93, class: 'ps-progress' },
 ];
 

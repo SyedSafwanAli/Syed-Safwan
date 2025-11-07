@@ -48,7 +48,7 @@ function ContactSection() {
 
                 {/* Social Links */}
                 <div className="footer-social">
-                    <h3>Follow Us:</h3>
+                    <h3>Follow Me:</h3>
                     <div className="social-links">
                         <a href="https://github.com/" target="_blank" aria-label="GitHub"><i className="fab fa-github"></i></a>
                         <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
